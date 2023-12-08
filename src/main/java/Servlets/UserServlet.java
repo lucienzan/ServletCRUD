@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
 
-import CRUD.UserRepository;
+import DAO.UserRepository;
 import Model.UserModel;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -46,6 +46,9 @@ public class UserServlet extends HttpServlet {
 				break;
 			case "/userUpdate":
 				UpdateUser(request, response);
+				break;
+			case "/delete":
+				DeleteUser(request, response);
 				break;
 			default:
 				GetAll(request, response);
@@ -158,6 +161,13 @@ public class UserServlet extends HttpServlet {
 			repository.Update(newUser);
 			response.sendRedirect("UserServlet");
 		}
+	}
+
+	private void DeleteUser(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		repository.DeleteUser(id);
+		response.sendRedirect("UserServlet");
 	}
 
 	@Override

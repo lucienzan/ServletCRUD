@@ -1,4 +1,4 @@
-package CRUD;
+package DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -94,6 +94,23 @@ public class UserRepository {
 			if (success != 0) {
 				var message = String.format("User's %s is updated.", model.getFirstName() + " " + model.getLastName());
 				System.out.println(message);
+			} else {
+				System.out.println("Something is wrong.");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void DeleteUser(int id) {
+		con = DBConnection.GetDBConnection();
+		String query = "DELETE FROM employee WHERE id = " + id;
+		try {
+			PreparedStatement pstm = con.prepareStatement(query);
+			int success = pstm.executeUpdate();
+			if (success != 0) {
+				System.out.println("user is deleted.");
 			} else {
 				System.out.println("Something is wrong.");
 			}

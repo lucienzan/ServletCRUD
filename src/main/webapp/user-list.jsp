@@ -49,6 +49,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					<p>Context Path: ${pageContext.request.contextPath}</p>
 				</div>
 			</div>
 		</div>
@@ -58,4 +59,5 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
 </html>
